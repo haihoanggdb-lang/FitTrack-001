@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack - Nhật ký Tập luyện</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">FitTrack</a>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Nhật ký Tập luyện của Tôi</h1>
+
+    <div class="card mb-4">
+        <div class="card-header">Ghi lại buổi tập hôm nay</div>
+        <div class="card-body">
+            <form id="workout-form">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label for="exercise-select" class="form-label">Bài tập</label>
+                        <select id="exercise-select" class="form-select" required>
+                            <option value="">-- Chọn bài tập --</option>
+                            </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="duration-input" class="form-label">Thời gian (phút)</label>
+                        <input type="number" id="duration-input" class="form-control" min="1" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="date-input" class="form-label">Ngày tập</label>
+                        <input type="date" id="date-input" class="form-control" required>
+                    </div>
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button type="submit" class="btn btn-primary w-100">Ghi lại</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">Lịch sử Tập luyện</div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Ngày</th>
+                        <th>Bài tập</th>
+                        <th>Thời gian (phút)</th>
+                        <th>Calo tiêu thụ</th>
+                    </tr>
+                </thead>
+                <tbody id="workout-list">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bundle.min.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/api.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

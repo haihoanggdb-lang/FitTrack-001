@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack Admin - Quản lý bài tập</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">FitTrack <span class="badge bg-danger ms-2" style="font-size: 0.75rem;">Admin</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Trang Người Dùng (Public)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="admin.html">Quản Lý Bài Tập</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-4">
+    <div class="row g-4">
+        
+        <div class="col-lg-4 col-md-12">
+            <div class="card sticky-top" style="top: 20px; z-index: 1020;">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <span id="form-title">Thêm Bài Tập Mới</span>
+                    <button type="button" id="btn-cancel-edit" class="btn btn-sm btn-outline-secondary d-none">Hủy Sửa</button>
+                </div>
+                <div class="card-body">
+                    <form id="exercise-form" novalidate>
+                        <div class="mb-3">
+                            <label for="ex-name" class="form-label">Tên bài tập <span class="text-danger">*</span></label>
+                            <input type="text" id="ex-name" class="form-control" placeholder="Ví dụ: Hít đất, Chạy bộ...">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="ex-category" class="form-label">Phân loại <span class="text-danger">*</span></label>
+                            <select id="ex-category" class="form-select">
+                                <option value="">-- Chọn phân loại --</option>
+                                <option value="Cardio">Cardio (Sức bền)</option>
+                                <option value="Gym">Gym (Sức mạnh)</option>
+                                <option value="Yoga">Yoga / Stretching</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="ex-muscle" class="form-label">Nhóm cơ mục tiêu <span class="text-danger">*</span></label>
+                            <input type="text" id="ex-muscle" class="form-control" placeholder="Ví dụ: Ngực, Tay sau, Đùi...">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="ex-cpm" class="form-label">Calo tiêu hao mỗi phút <span class="text-danger">*</span></label>
+                            <input type="number" id="ex-cpm" class="form-control" min="0.1" step="0.1" placeholder="Ví dụ: 8.5">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="ex-desc" class="form-label">Ghi chú chi tiết nội dung bài tập</label>
+                            <textarea id="ex-desc" class="form-control" rows="3" placeholder="Hướng dẫn tư thế hoặc lưu ý khi tập..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100" id="btn-submit-form">Thêm Bài Tập</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-8 col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    Danh Sách Cấu Trúc Bài Tập Gốc (Cập nhật từ MockAPI)
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover m-0 table-responsive-stack">
+                            <thead>
+                                <tr>
+                                    <th style="width: 8%">ID</th>
+                                    <th style="width: 30%">Tên bài tập</th>
+                                    <th style="width: 15%">Phân loại</th>
+                                    <th style="width: 20%">Nhóm cơ mục tiêu</th>
+                                    <th style="width: 12%">Calo/Phút</th>
+                                    <th style="width: 15%">Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-exercise-table">
+                                </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bundle.min.js"></script>
+
+<script src="js/api.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

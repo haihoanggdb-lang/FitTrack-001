@@ -1,0 +1,252 @@
+/* ==========================================================================
+   css/style.css - FitTrack Custom Styles
+   ========================================================================== */
+
+/* 1. Khai báo biến và thiết lập chung */
+:root {
+    --bg-primary: #121212;
+    --bg-surface: #1e1e1e;
+    --bg-surface-hover: #2a2a2a;
+    --text-primary: #ffffff;
+    --text-secondary: #aaaaaa;
+    --accent-color: #0d6efd; /* Blue primary từ Bootstrap */
+    --accent-success: #198754;
+    --border-color: #333333;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* 2. Tùy chỉnh các thành phần Bootstrap (Navbar, Card, Table) */
+.navbar {
+    background-color: #000000 !important;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--accent-color) !important;
+}
+
+.card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid var(--border-color);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Tùy chỉnh Form & Input */
+.form-label {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.form-control, .form-select {
+    background-color: #252525;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: #2d2d2d;
+    border-color: var(--accent-color);
+    color: var(--text-primary);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Tùy chỉnh Bảng (Table) */
+.table {
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.table-hover tbody tr:hover {
+    background-color: var(--bg-surface-hover);
+    color: var(--text-primary);
+}
+
+th {
+    color: var(--text-secondary);
+    font-weight: 600;
+    border-bottom-width: 2px !important;
+}
+
+/* 3. Form Validation & Inline Error (Hình 2, Mục 3) */
+.inline-error {
+    color: #dc3545;
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+    display: block;
+    font-weight: 500;
+}
+
+input.is-invalid, select.is-invalid {
+    border-color: #dc3545 !important;
+    background-image: none !important;
+}
+
+/* 4. Xử lý trạng thái Loading (Spinner / Skeleton - Hình 2, Mục 2) */
+.loading-spinner {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border-top-color: var(--accent-color);
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Skeleton loader cho các dòng dữ liệu trong bảng đang chờ gọi API */
+.skeleton-row td {
+    padding: 15px;
+}
+
+.skeleton-box {
+    height: 16px;
+    background: linear-gradient(90deg, #252525 25%, #333333 50%, #252525 75%);
+    background-size: 200% 100%;
+    animation: loading-skeleton 1.5s infinite;
+    border-radius: 4px;
+    width: 100%;
+}
+
+@keyframes loading-skeleton {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* 5. Biểu đồ tiến độ đơn giản bằng CSS/jQuery (Hình 1, Mục "Biểu đồ tiến độ") */
+.progress-container {
+    background-color: #252525;
+    border-radius: 20px;
+    position: relative;
+    margin: 15px 0;
+    height: 25px;
+    width: 100%;
+    border: 1px solid var(--border-color);
+}
+
+.progress-bar-custom {
+    background: linear-gradient(90deg, var(--accent-color), #00f2fe);
+    border-radius: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 0; /* Sẽ được jQuery tăng % động tịnh tiến lên */
+    transition: width 1s ease-in-out; 
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+/* 6. Hỗ trợ các hiệu ứng jQuery Animate (Hình 2, Mục 4) */
+.fade-in {
+    opacity: 0;
+    display: none; /* Sẽ dùng .fadeIn() của jQuery để kích hoạt */
+}
+
+.slide-down {
+    display: none; /* Sẽ dùng .slideDown() của jQuery để kích hoạt */
+}
+
+/* 7. Giao diện Phản hồi - Responsive Breakpoints (Hình 2, Mục 5) */
+
+/* Mobile (< 576px) */
+@media (max-width: 575.98px) {
+    .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    h1 {
+        font-size: 1.75rem;
+    }
+    /* Chuyển bảng dữ liệu thành các khối/card nhỏ trên màn hình dọc nhỏ để không vỡ layout */
+    .table-responsive-stack table,
+    .table-responsive-stack thead,
+    .table-responsive-stack tbody,
+    .table-responsive-stack th,
+    .table-responsive-stack td,
+    .table-responsive-stack tr {
+        display: block;
+    }
+    .table-responsive-stack thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    .table-responsive-stack tr {
+        border: 1px solid var(--border-color);
+        margin-bottom: 10px;
+        background-color: rgba(255, 255, 255, 0.01);
+        padding: 8px;
+        border-radius: 6px;
+    }
+    .table-responsive-stack td {
+        border: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        position: relative;
+        padding-left: 50% !important;
+        text-align: right;
+    }
+    .table-responsive-stack td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+        color: var(--text-secondary);
+        content: attr(data-label); /* Gắn nhãn cột tự động */
+    }
+}
+
+/* Tablet (≥ 768px đến < 992px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .card-body {
+        padding: 1.25rem;
+    }
+    h1 {
+        font-size: 2.25rem;
+    }
+}
+
+/* Desktop (≥ 992px) */
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+    /* Đẩy rộng form nhập liệu thẳng hàng đẹp mắt */
+    #workout-form .row {
+        align-items: flex-end;
+    }
+}
